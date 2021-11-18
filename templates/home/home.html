@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block title %}Home{%endblock title%}
+{% block homeactive %} active {% endblock homeactive %}
+{% block css %}
+
+}
+h1, h2 {
+text-transform: uppercase;
+font-weight: 400;
+}
+h2 {
+margin: 0 0 0 8px;
+}
+.main-block {
+color: #696969;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+padding: 25px;
+background: url("https://i.ytimg.com/vi/7iGOJi3EnCc/maxresdefault.jpg") no-repeat center;
+background-size: cover;
+
+}
+.left-part, form {
+padding: 25px;
+}
+.left-part {
+text-align: center;
+}
+.fa-graduation-cap {
+font-size: 72px;
+}
+form {
+background: rgba(0, 0, 0, 0.7); 
+}
+.title {
+display: flex;
+align-items: center;
+margin-bottom: 20px;
+}
+.info {
+display: flex;
+flex-direction: column;
+}
+input, select {
+padding: 5px;
+margin-bottom: 30px;
+background: transparent;
+border: none;
+border-bottom: 1px solid #eee;
+}
+input::placeholder {
+color: #eee;
+}
+option:focus {
+border: none;
+}
+option {
+background: black; 
+border: none;
+}
+.checkbox input {
+margin: 0 10px 0 0;
+vertical-align: middle;
+}
+.checkbox a {
+color: #26a9e0;
+}
+.checkbox a:hover {
+color: #85d6de;
+}
+.btn-item, button {
+padding: 10px 5px;
+margin-top: 20px;
+border-radius: 5px; 
+border: none;
+background: #26a9e0; 
+text-decoration: none;
+font-size: 15px;
+font-weight: 400;
+color: #fff;
+}
+.btn-item {
+display: inline-block;
+margin: 20px 5px 0;
+}
+button {
+width: 100%;
+}
+button:hover, .btn-item:hover {
+background: #85d6de;
+}
+@media (min-width: 568px) {
+html, body {
+height: 100%;
+}
+.main-block {
+flex-direction: row;
+height: calc(100% - 50px);
+}
+.left-part, form {
+flex: 1;
+height: auto;
+}
+}
+}
+{% endblock css %}
+{% block body %}
+<div class='container'>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://c.ndtvimg.com/2020-04/u3a8nia8_ipl-trophy-twitter_625x300_13_April_20.jpg"
+          class="d-block w-100 " alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2020/08/07/917968-ipl.jpg"
+          class="d-block w-100 " alt="...">
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://timesofindia.indiatimes.com/thumb/msid-81985963,imgsize-112014,width-400,resizemode-4/81985963.jpg"
+          class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+  <div class="main-block">
+    <div class="left-part">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Predict the score</h1>
+      <p>Hey there!!</p>
+      
+    </div>
+    <form method="post" action="/predict">
+      {% csrf_token %}
+      <div class="title">
+        <i class="fas fa-pencil-alt"></i> 
+        <h2>Predict here</h2>
+      </div>
+      <div class="info">
+        <input type="text" name="inns" id="inns" placeholder="Inning">
+        <input type="text" name="overi" id="overi" placeholder="Initial over">
+        <input type="text" name="balli" id="balli" placeholder="Initial ball">
+        <input type="text" name="overf" id="overf" placeholder="Final over">
+        <input type="text" name="ballf" id="ballf" placeholder="Final ball">
+      </div>
+      
+      <button type="submit" >Submit</button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock body %}
+<!-- Optional JavaScript; choose one of the two! -->
