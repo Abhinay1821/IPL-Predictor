@@ -1,2 +1,1 @@
-# IPL-Score
 # IPL-Predictor
